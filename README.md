@@ -1,6 +1,3 @@
-### Library Management System
-
-
 # Library Management System
 
 The Library Management System is a web application designed to manage library resources, including books, members, and transactions. This system has a RESTful API backend built with Java Spring Boot and a user-friendly frontend developed using React.
