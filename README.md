@@ -56,26 +56,26 @@ The frontend will be accessible at http://localhost:5173.
   
     Create a new database named `lms` in your database management system (e.g., *MySQL*, *PostgreSQL*).
 
-  For example, if you're using **MySQL**:
-   ```sql
-   CREATE DATABASE lms;
-   ```
+    For example, if you're using **MySQL**:
+     ```sql
+     CREATE DATABASE lms;
+     ```
 
 2. **Navigate to the backend directory:**
-   ```bash
-   cd backend
-   ```
+     ```bash
+     cd backend
+     ```
 
 3. **Configure the application properties:**
-  Open `src/main/resources/application.properties` and configure your database connection settings:
-   ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/lms
-    spring.datasource.username=root
-    spring.datasource.password=your_password
-    spring.jpa.hibernate.ddl-auto=update
-    spring.jpa.show-sql=true
-   ```
-  Replace `root` and `your_password` with your actual database credentials.
+    Open `src/main/resources/application.properties` and configure your database connection settings:
+     ```properties
+      spring.datasource.url=jdbc:mysql://localhost:3306/lms
+      spring.datasource.username=root
+      spring.datasource.password=your_password
+      spring.jpa.hibernate.ddl-auto=update
+      spring.jpa.show-sql=true
+     ```
+    Replace `root` and `your_password` with your actual database credentials.
 
 4. **Build & Start the development server:**
     ```bash
