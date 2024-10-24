@@ -60,7 +60,7 @@ The frontend will be accessible at http://localhost:5173.
 
 2. **Navigate to the backend directory:**
      ```bash
-     cd backend
+     cd backend-main
      ```
 
 3. **Configure the application properties:**
