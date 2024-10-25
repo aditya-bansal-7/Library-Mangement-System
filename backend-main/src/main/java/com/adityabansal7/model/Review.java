@@ -21,6 +21,6 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reviewId;
     private String message;
-    private Integer userId; // Reference to the user
-
+    private Integer userId;
+    private String userName;
 }

@@ -35,6 +35,7 @@ public class SampleDataImporter {
                 .isAdmin(false)
                 .role("STUDENT")
                 .isActive(true)
+                .fine(0.0)
                 .build();
 
         User user3 = User.builder()
@@ -47,6 +48,7 @@ public class SampleDataImporter {
                 .isAdmin(false)
                 .role("STUDENT")
                 .isActive(false)
+                .fine(0.0)
                 .build();
 
         User user2 = User.builder()
@@ -59,21 +61,26 @@ public class SampleDataImporter {
                 .isAdmin(true)
                 .role("ADMIN")
                 .isActive(true)
+                .fine(0.0)
                 .build();
 
 
         // Save users
+        
         userRepository.saveAll(Arrays.asList(user1, user2,user3));
+        
 
         // Create sample reviews
         Review review1 = Review.builder()
                 .message("Great book for learning Spring Boot!")
                 .userId(user1.getUserId())
+                .userName(user1.getFirstName() + " " + user1.getLastName())
                 .build();
 
         Review review2 = Review.builder()
                 .message("Very informative and well-written.")
                 .userId(user2.getUserId())
+                .userName(user2.getFirstName() + " " + user2.getLastName())
                 .build();
 
         // Create and save sample books
@@ -96,7 +103,9 @@ public class SampleDataImporter {
                 .build();
 
         // Save books
+        
         bookRepository.saveAll(Arrays.asList(book1, book2));
+        
 
         System.out.println("Sample data saved to the database.");
     }

@@ -9,7 +9,7 @@ The Library Management System is a web application designed to manage library re
 - [Installation](#installation)
   - [Frontend](#frontend)
   - [Backend](#backend)
-- [API Documentation](#api)
+- [API Documentation](#api-documentation)
 
 
 ## Features
@@ -80,3 +80,23 @@ The frontend will be accessible at http://localhost:5173.
     mvn spring-boot:run
    ```
 The backend API will be available at http://localhost:8008.
+
+## API Documentation
+
+### User Endpoints
+
+- **POST /user/registerUser**: Register a new user.
+- **GET /user/getUser/{userId}**: Retrieve user details by user ID.
+- **POST /user/login**: Log in a user with email and password.
+- **GET /user/allUsers**: Retrieve a list of all users.
+- **PUT /user/blockUser/{userId}**: Block a user by user ID.
+- **PUT /user/unblockUser/{userId}**: Unblock a user by user ID.
+- **PUT /user/updateFine/{userId}**: Update the fine amount for a user.
+
+### Book Endpoints
+
+- **POST /api/books/addNewBook**: Add a new book to the library.
+- **GET /api/books/getBook/{bookId}**: Retrieve book details by book ID.
+- **POST /api/books/search**: Search for books based on a query and user ID.
+- **GET /api/books/getAllBooks**: Retrieve a list of all books.
+- **GET /api/books/book/{bookId}**: Retrieve book details by book ID.

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.adityabansal7.model.Book;
 import com.adityabansal7.repository.BookRepository;
+import com.adityabansal7.model.Review;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -35,6 +36,28 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> getAllBooks() {
 		return bookRepository.findAll();
+	}
+
+	@Override
+	public Book addReview(Integer bookId, Review review) {
+		Optional<Book> optionalBook = findBookById(bookId);
+		if (optionalBook.isPresent()) {
+			Book book = optionalBook.get();
+			book.getReviews().add(review); 
+			return bookRepository.save(book);
+		}
+		throw new RuntimeException("Book not found");
+	}
+
+	@Override
+	public Book toggleAvailability(Integer bookId, boolean availability) {
+		Optional<Book> optionalBook = findBookById(bookId);
+		if (optionalBook.isPresent()) {
+			Book book = optionalBook.get();
+			book.setAvailability(availability);
+			return bookRepository.save(book);
+		}
+		throw new RuntimeException("Book not found");
 	}
 
 }

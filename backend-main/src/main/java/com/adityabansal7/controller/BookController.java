@@ -14,10 +14,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adityabansal7.model.Book;
+import com.adityabansal7.model.Review;
 import com.adityabansal7.service.BookService;
 
 // Add this import statement
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/books")
@@ -60,6 +62,24 @@ public class BookController {
 		return bookService.findBookById(bookId)
 			          .map(ResponseEntity::ok)
 			          .orElseGet(() -> ResponseEntity.notFound().build());
+	}
+	
+	@PostMapping("/book/{bookId}/addReview")
+	public ResponseEntity<Book> addReview(@PathVariable Integer bookId, @RequestBody Review review) {
+		logger.info("Received review for bookId {}: {}", bookId, review);
+		review.setUserId(review.getUserId()); 
+		review.setUserName(review.getUserName());
+		Book updatedBook = bookService.addReview(bookId, review);
+		return ResponseEntity.ok(updatedBook);
+	}
+	
+	@PostMapping("/{bookId}/toggleAvailability")
+	public ResponseEntity<Book> toggleAvailability(@PathVariable Integer bookId, @RequestBody Map<String, Boolean> availability) {
+		Book book = bookService.findBookById(bookId)
+				.orElseThrow(() -> new RuntimeException("Book not found"));
+		book.setAvailability(availability.get("availability"));
+		Book updatedBook = bookService.addBook(book);
+		return ResponseEntity.ok(updatedBook);
 	}
 }
 
