@@ -33,7 +33,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String address;
-
+    private boolean isAdmin;
+    
     @Column(unique=true)
     private String phoneNumber;
 

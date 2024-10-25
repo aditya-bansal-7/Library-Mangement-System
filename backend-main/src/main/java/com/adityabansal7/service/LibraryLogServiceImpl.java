@@ -55,7 +55,7 @@ public class LibraryLogServiceImpl implements LibraryLogService{
 	//Assigning the book to user if the book available and user shouldn't issued more than 5 book.
 	public boolean assignBookToUser(User user,Book book) {
 		int maxBookPerPerson = 5;
-		boolean isBookAvailable = book.getAvailability();
+		boolean isBookAvailable = book.isAvailability(); 
 		
 		if(user.getBookList().size() < maxBookPerPerson && isBookAvailable) {
 			user.getBookList().add(book);

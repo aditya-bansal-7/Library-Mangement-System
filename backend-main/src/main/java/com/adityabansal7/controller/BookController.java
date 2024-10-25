@@ -54,6 +54,13 @@ public class BookController {
 		List<Book> allBooks = bookService.getAllBooks();
 		return ResponseEntity.ok(allBooks);
 	}
+	
+	@GetMapping("/book/{bookId}")
+	public ResponseEntity<Book> getBookDetails(@PathVariable Integer bookId) {
+		return bookService.findBookById(bookId)
+			          .map(ResponseEntity::ok)
+			          .orElseGet(() -> ResponseEntity.notFound().build());
+	}
 }
 
 // Add this class at the end of the file

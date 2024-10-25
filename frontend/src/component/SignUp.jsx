@@ -11,13 +11,17 @@ const SignUp = () => {
         userEmail: '',
         password: '',
         bookList: [],
+        isAdmin: false, 
     });
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value, 
+        });
     };
 
     const handleSubmit = async (e) => {
@@ -108,6 +112,16 @@ const SignUp = () => {
                             onChange={handleChange}
                             required
                             className="mt-1 block w-full p-2 border border-gray-300 rounded"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Admin</label>
+                        <input
+                            type="checkbox"
+                            name="isAdmin"
+                            checked={formData.isAdmin}
+                            onChange={handleChange}
+                            className="mt-1"
                         />
                     </div>
                     <button

@@ -21,9 +21,13 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:8008/user/login', formData);
             console.log('Login successful:', response.data);
-            // Save user details to local storage
             localStorage.setItem('user', JSON.stringify(response.data));
-            navigate('/');
+            
+            if (response.data.admin) {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
         } catch (error) {
             console.error('Error logging in:', error.response.data);
             setError(error.response.data.message || 'An error occurred during login');

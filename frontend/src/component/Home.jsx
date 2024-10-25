@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -39,11 +41,15 @@ const Home = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {books.map((book) => (
-            <div key={book.bookId} className="bg-white shadow-md rounded-lg p-6">
+            <div
+              key={book.bookId}
+              className="bg-white shadow-md rounded-lg p-6 cursor-pointer"
+              onClick={() => navigate(`/book/${book.bookId}`)}
+            >
               <h2 className="text-xl font-semibold mb-2">{book.bookTitle}</h2>
               <p className="text-gray-600 mb-2">Author: {book.bookAuthor}</p>
               <p className="text-gray-600 mb-2">ISBN: {book.bookIsbn}</p>
-              <p className="text-gray-600">Category: {book.bookCategory}</p>
+              <p className="text-gray-600">Category: {book.tags}</p>
             </div>
           ))}
         </div>

@@ -83,7 +83,11 @@ function App() {
               {searchResults.length > 0 && (
                 <div className="absolute z-10 mt-1 w-full bg-white rounded-md shadow-lg max-h-60 overflow-y-auto">
                    {searchResults.map((book) => (
-                    <div key={book.bookId} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    <div 
+                      key={book.bookId} 
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      onClick={() => navigate(`/book/${book.bookId}`)}
+                    >
                       <div className="font-semibold">{book.bookTitle}</div>
                       <div className="text-sm text-gray-600">{book.bookAuthor}</div>
                       <div className="text-xs text-gray-500">
@@ -98,9 +102,12 @@ function App() {
           <div className="flex space-x-2">
             {user ? (
               <>
-                <NavLink to="/profile" className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-1 rounded">
+                {user.admin ? <NavLink to="/admin" className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-1 rounded">
+                  Admin
+                </NavLink> : <NavLink to="/profile" className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-1 rounded">
                   My Profile
-                </NavLink>
+                </NavLink>}
+                
                 <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
                   Logout
                 </button>

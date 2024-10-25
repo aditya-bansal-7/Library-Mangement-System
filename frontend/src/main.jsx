@@ -12,6 +12,13 @@ import Home from './component/Home.jsx';
 import About from './component/About.jsx';
 import Categories from './component/Categories.jsx';
 import AddBook from './component/AddBook.jsx';
+import AdminRoute from './component/AdminRoute.jsx';
+import BookDetails from './component/BookDetails.jsx';
+import AdminDashboard from './component/AdminDashboard.jsx';
+import BookManagement from './component/BookManagement.jsx';
+import AdminGrid from './component/AdminGrid.jsx';
+// import UserManagement from './component/UserManagement.jsx';
+// import Stats from './component/Stats.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +41,10 @@ const router = createBrowserRouter([
         path: "admin/addbook",
         element: <AddBook />,
       },
+      {
+        path: "book/:bookId",
+        element: <BookDetails />,
+      },
     ],
   },
   {
@@ -43,6 +54,42 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/admin",
+    element: <AdminRoute />,
+    children: [
+      {
+        path: "",
+        element: <AdminDashboard />,
+        children: [
+          {
+            path: "books",
+            element: <BookManagement />,
+          },
+          // {
+          //   path: "users",
+          //   element: <UserManagement />,
+          // },
+          {
+            path: "",
+            element: <AdminGrid />,
+          },
+          // {
+          //   path: "stats",
+          //   element: <Stats />,
+          // },
+        ],
+      },
+      {
+        path: "addbook",
+        element: <AddBook />,
+      },
+      // {
+      //   path: "editbook/:bookId",
+      //   element: <EditBook />,
+      // },
+    ],
   },
 ]);
 
