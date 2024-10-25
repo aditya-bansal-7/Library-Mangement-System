@@ -48,6 +48,20 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Book> bookList;
 
+    private String role; 
+    private boolean isActive = true; 
+
+    @Column(nullable = false)
+    private Double fine = 0.0;
+
+    public void blockUser() {
+        this.isActive = false;
+    }
+
+    public void unblockUser() {
+        this.isActive = true;
+    }
+
     @PrePersist
     @PreUpdate
     private void validateEmail() {

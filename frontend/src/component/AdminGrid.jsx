@@ -7,10 +7,13 @@ const AdminGrid = () => {
     <div className='flex'>
       <div className="w-full flex flex-col items-center gap-20 bg-gray-800 min-h-screen p-4">
         <h1 className="text-white text-2xl font-bold mb-6">Admin Dashboard</h1>
-        <div>
+        <div className='flex gap-10'>
         <Link to="/admin/books" >
             <Card msg="Books Management System" />
-            </Link>
+          </Link>
+        <Link to="/admin/users" >
+            <Card msg="Users Management System" />
+          </Link>
         </div>
         
       </div>

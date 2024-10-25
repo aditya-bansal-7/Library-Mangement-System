@@ -17,7 +17,7 @@ import BookDetails from './component/BookDetails.jsx';
 import AdminDashboard from './component/AdminDashboard.jsx';
 import BookManagement from './component/BookManagement.jsx';
 import AdminGrid from './component/AdminGrid.jsx';
-// import UserManagement from './component/UserManagement.jsx';
+import UserManagement from './component/UserManagement.jsx';
 // import Stats from './component/Stats.jsx';
 
 const router = createBrowserRouter([
@@ -67,10 +67,10 @@ const router = createBrowserRouter([
             path: "books",
             element: <BookManagement />,
           },
-          // {
-          //   path: "users",
-          //   element: <UserManagement />,
-          // },
+          {
+            path: "users",
+            element: <UserManagement />,
+          },
           {
             path: "",
             element: <AdminGrid />,

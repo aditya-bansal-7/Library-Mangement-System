@@ -23,6 +23,8 @@ public class SampleDataImporter {
         BookRepository bookRepository = context.getBean(BookRepository.class);
 
         // Create and save sample users
+        
+
         User user1 = User.builder()
                 .firstName("Student")
                 .lastName("1")
@@ -31,11 +33,20 @@ public class SampleDataImporter {
                 .userEmail("student1@galgotiasuniversity.ac.in")
                 .password("Pass@123")
                 .isAdmin(false)
-                .studentId("STU001")
-                .userType("student")
+                .role("STUDENT")
                 .isActive(true)
-                .isBorrowingBlocked(false)
-                .fineAmount(0.0)
+                .build();
+
+        User user3 = User.builder()
+                .firstName("Student")
+                .lastName("2")
+                .address("123 Main St")
+                .phoneNumber("1234557890")
+                .userEmail("student2@galgotiasuniversity.ac.in")
+                .password("Pass@123")
+                .isAdmin(false)
+                .role("STUDENT")
+                .isActive(false)
                 .build();
 
         User user2 = User.builder()
@@ -46,30 +57,13 @@ public class SampleDataImporter {
                 .userEmail("admin1@galgotiasuniversity.ac.in")
                 .password("Pass@123")
                 .isAdmin(true)
-                .studentId("ADM001")
-                .userType("staff")
+                .role("ADMIN")
                 .isActive(true)
-                .isBorrowingBlocked(false)
-                .fineAmount(0.0)
                 .build();
 
-        User user3 = User.builder()
-                .firstName("Faculty")
-                .lastName("1")
-                .address("789 Oak St")
-                .phoneNumber("1122334455")
-                .userEmail("faculty1@galgotiasuniversity.ac.in")
-                .password("Pass@123")
-                .isAdmin(false)
-                .studentId("FAC001")
-                .userType("faculty")
-                .isActive(true)
-                .isBorrowingBlocked(false)
-                .fineAmount(0.0)
-                .build();
 
         // Save users
-        userRepository.saveAll(Arrays.asList(user1, user2, user3));
+        userRepository.saveAll(Arrays.asList(user1, user2,user3));
 
         // Create sample reviews
         Review review1 = Review.builder()

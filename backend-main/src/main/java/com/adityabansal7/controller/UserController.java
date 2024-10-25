@@ -1,5 +1,7 @@
 package com.adityabansal7.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,4 +40,33 @@ public class UserController {
         User loggedInUser = userService.loginUser(email, password);
         return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/allUsers", produces = "application/json")
+    public ResponseEntity<List<User>> getAllUsers() {
+        
+        List<User> users = userService.getAllUsers();
+        
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+
+    @PutMapping("/blockUser/{userId}")
+    public ResponseEntity<User> blockUser(@PathVariable Integer userId) throws UserException {
+        User user = userService.blockUser(userId);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PutMapping("/unblockUser/{userId}")
+    public ResponseEntity<User> unblockUser(@PathVariable Integer userId) throws UserException {
+        User user = userService.unblockUser(userId);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PutMapping("/updateFine/{userId}")
+    public ResponseEntity<User> updateFine(@PathVariable Integer userId, @RequestBody Map<String, Double> payload) throws UserException {
+        Double fine = payload.get("fine");
+        User user = userService.updateFine(userId, fine);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
 }

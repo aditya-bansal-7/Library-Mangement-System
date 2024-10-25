@@ -1,6 +1,7 @@
 package com.adityabansal7.service;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,7 +59,32 @@ public class UserServiceImpl implements UserService {
         
         return user;
     }
+    @Override
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
+    }
 
+    @Override
+    public User blockUser(Integer userId) throws UserException {
+        User user = userRepo.findById(userId).orElseThrow(() -> new UserException("User not found"));
+        user.blockUser();
+        return userRepo.save(user);
+    }
+
+    @Override
+    public User unblockUser(Integer userId) throws UserException {
+        User user = userRepo.findById(userId).orElseThrow(() -> new UserException("User not found"));
+        user.unblockUser();
+        return userRepo.save(user);
+    }
+
+    @Override
+    public User updateFine(Integer userId, Double fine) throws UserException {
+        User user = userRepo.findById(userId).orElseThrow(() -> new UserException("User not found"));
+        user.setFine(fine);
+        return userRepo.save(user);
+    }
+    
     private boolean isValidGalgotiasEmail(String email) {
         return email != null && email.toLowerCase().endsWith("@galgotiasuniversity.ac.in");
     }
