@@ -9,15 +9,15 @@ The Library Management System is a web application designed to manage library re
 - [Installation](#installation)
   - [Frontend](#frontend)
   - [Backend](#backend)
-- [API Documentation](#api-documentation)
+- [API Documentation](#api)
 
 
 ## Features
 
 - User authentication (registration and login)
-- Add, update, delete books
+- Add, update, delete books 
 - Search and filter books
-- Manage user accounts
+- Manage user accounts, block and unblock them
 - Record borrowing and returning of books
 
 ## Tech Stack
