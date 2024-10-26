@@ -45,7 +45,7 @@ The Library Management System is a web application designed to manage library re
     ```bash
    npm run dev
    ```
-The frontend will be accessible at http://localhost:5173.
+The frontend will be accessible at http://localhost:5173
 
 ### Backend
 
